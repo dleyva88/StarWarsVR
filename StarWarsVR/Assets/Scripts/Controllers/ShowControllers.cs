@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class ShowControllers : MonoBehaviour
+public class ShowControllers : MonoBehaviour 
 {
-    public bool showController = false;
+    public bool showControl = false;
 
     // Update is called once per frame
     void Update()
     {
         foreach (var hand in Player.instance.hands)
         {
-            if (showController)
+            if (showControl)
             {
                 hand.ShowController(true);
                 hand.SetSkeletonRangeOfMotion(Valve.VR.EVRSkeletalMotionRange.WithController);
