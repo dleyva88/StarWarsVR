@@ -187,6 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004e3c04813bb4e4f9e7a76b1f330788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrainingDroidPrefab: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!4 &351688576
 Transform:
   m_ObjectHideFlags: 0
@@ -679,11 +681,11 @@ Light:
   m_GameObject: {fileID: 1325413506}
   m_Enabled: 1
   serializedVersion: 9
-  m_Type: 4
+  m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
+  m_Range: 50
+  m_SpotAngle: 179
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -1052,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8108cc23b8ae11d4ebed004fdc4bbb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showControl: 0
 --- !u!1001 &1982758188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1133,6 +1136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ad9f43167039a44a3d3dcedb09f217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActivateSpeed: 5
+  BladeOnSound: {fileID: 0}
+  BladeOffSound: {fileID: 0}
+  BladeConstantSound: {fileID: 0}
+  BladeReflectSound: {fileID: 0}
+  BladeLight: {fileID: 0}
 --- !u!82 &1982758192
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1349,6 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 037297b895e4d4b48883362ff8064c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anchor: {fileID: 0}
 --- !u!4 &1993273736
 Transform:
   m_ObjectHideFlags: 0
