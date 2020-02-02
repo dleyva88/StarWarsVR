@@ -3,7 +3,7 @@
 public class Bullet : MonoBehaviour
 {
     public float Speed = .01f;
-
+    int direction = 1;
     // Use this for initialization
     void Start()
     {
@@ -12,14 +12,22 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * 25.0f * Time.smoothDeltaTime;
+        transform.position += direction * transform.forward * 25.0f * Time.smoothDeltaTime;
     }
 
-    //void OnTriggerEnter(Collider collision)
-    //{
-    //    if (collision.gameObject.layer != LayerMask.NameToLayer("Enemy"))
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.gameObject.name.Equals("player"))
+        {
+            Debug.Log("The player got hit!");
+
+            Destroy(this.gameObject);
+        }
+        else if (other.transform.gameObject.name.Equals("Lightsaber"))
+        {
+            Debug.Log("Hit lightsaber");
+
+            direction = -1;
+        }
+    }
 }
