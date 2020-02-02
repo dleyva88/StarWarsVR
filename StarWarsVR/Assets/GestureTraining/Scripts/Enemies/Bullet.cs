@@ -10,16 +10,16 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        GetComponent<Rigidbody>().position += transform.forward * Speed;
+        transform.position += transform.forward * 25.0f * Time.smoothDeltaTime;
     }
 
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.layer != LayerMask.NameToLayer("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }
+    //void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.layer != LayerMask.NameToLayer("Enemy"))
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }
