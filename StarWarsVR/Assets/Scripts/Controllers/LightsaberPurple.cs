@@ -7,41 +7,30 @@ public class LightsaberPurple : MonoBehaviour
     LineRenderer lineRend;
     public Transform startPos;
     public Transform endPos;
-    public AudioClip BladeOnSound;
-    public AudioClip BladeOffSound;
-    public AudioClip BladeConstantSound;
-    public AudioClip BladeReflectSound;
 
     private float textureOffset = 0;
-    private bool isOn = true;
+    private bool isOn = false;
     private Vector3 extendedEndPos;
-    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         lineRend = GetComponent<LineRenderer>();
         extendedEndPos = endPos.localPosition;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = BladeConstantSound;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Turn lightsaber on and off
-        if(Input.GetKeyDown(KeyCode.Menu))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             if(isOn)
             {
-                audioSource.Stop();
-                audioSource.PlayOneShot(BladeOffSound);
                 isOn = false;
             }
             else
             {
-                audioSource.PlayOneShot(BladeOnSound);
-                audioSource.Play();
                 isOn = true;
             }
         }
