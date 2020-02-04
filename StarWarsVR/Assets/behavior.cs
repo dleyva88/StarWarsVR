@@ -15,16 +15,16 @@ public class behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(GameObject.Find("player").transform);
+        gameObject.transform.LookAt(GameObject.Find("Player").transform);
 
         transform.position += transform.forward * 2.0f * Time.smoothDeltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.name.Equals("player"))
+        if (other.transform.gameObject.name.Equals("Player"))
         {
-            Debug.Log("The player got hit!");
+            Debug.Log("The Player got hit!");
 
             Destroy(this.gameObject);
         }

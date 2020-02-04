@@ -21,7 +21,7 @@ public class BladeController : MonoBehaviour
     {
         mAudioSource = GetComponent<AudioSource>();
         mAudioSource.clip = BladeConstantSound;
-        BladeLight.intensity = 0;
+        BladeLight.intensity = 1;
     }
 
     public void ActivateBlade(bool doActivate)
