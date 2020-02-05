@@ -6,8 +6,6 @@ using UnityEngine;
 public class BladeController : MonoBehaviour
 {
     public float ActivateSpeed = 5;
-    public AudioClip BladeOnSound;
-    public AudioClip BladeOffSound;
     public AudioClip BladeConstantSound;
     public AudioClip BladeReflectSound;
     public Light BladeLight;
@@ -21,33 +19,10 @@ public class BladeController : MonoBehaviour
     {
         mAudioSource = GetComponent<AudioSource>();
         mAudioSource.clip = BladeConstantSound;
+        mAudioSource.Play();
         BladeLight.intensity = 1;
     }
-
-    public void ActivateBlade(bool doActivate)
-    {
-        if (doActivate && !mIsOn)
-        {
-            mAudioSource.PlayOneShot(BladeOnSound);
-            mAudioSource.Play();
-            BladeLight.intensity = 1;
-        }
-        else if (!doActivate && mIsOn)
-        {
-            mAudioSource.Stop();
-            mAudioSource.PlayOneShot(BladeOffSound);
-            BladeLight.intensity = 0;
-        }
-
-        mIsOn = doActivate;
-        mTargetScale = mIsOn ? 1 : 0;
-    }
-
-    public void ToggleActivateBlade()
-    {
-        ActivateBlade(!mIsOn);
-    }
-
+    
     void FixedUpdate()
     {
         // Move towards the target scale with constant step.
@@ -59,15 +34,7 @@ public class BladeController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (mIsOn)
-        {
-            if (other.tag == "Projectile")
-            {
-                LaserBoltController laserBolt = other.gameObject.GetComponentInParent<LaserBoltController>();
-                laserBolt.Reflect();
-
-                mAudioSource.PlayOneShot(BladeReflectSound);
-            }
-
+        {         
             Destroyable destroyable = other.gameObject.GetComponent<Destroyable>();
             if (destroyable)
             {
