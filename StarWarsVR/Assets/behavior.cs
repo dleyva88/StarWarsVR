@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class behavior : MonoBehaviour
 {
-    public int maxWave = 3;
-    int curWave = 1;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,20 +20,22 @@ public class behavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("collision detected");
+        print("Name of other collider: " + other.transform.gameObject.name);
         if (other.transform.gameObject.name.Equals("Player"))
         {
             Debug.Log("The Player got hit!");
 
             Destroy(this.gameObject);
         }
-        else if (other.transform.gameObject.name.Equals("Lightsaber"))
-        {
-            Debug.Log("Hit lightsaber");
+        else if (other.transform.gameObject.name.Equals("Hilt"))
+        { 
+            other.GetComponent<killCounter>().numKilled++;
 
-            if (curWave < maxWave)
+            if (other.GetComponent<killCounter>().numKilled <= other.GetComponent<killCounter>().maxKill/2)
             {
-                int newX = Random.Range(100, 400);
-                int newZ = Random.Range(100, 400);
+                int newX = Random.Range(10, 40);
+                int newZ = Random.Range(10, 40);
 
                 int dirX = Random.Range(0, 2) == 0 ? -1 : 1;
                 int dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
@@ -43,10 +43,9 @@ public class behavior : MonoBehaviour
                 Vector3 newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
                 
                 var newDroid = Instantiate(this.gameObject, newLocation, this.transform.rotation);
-                newDroid.GetComponent<behavior>().curWave++;
 
-                newX = Random.Range(100, 400);
-                newZ = Random.Range(100, 400);
+                newX = Random.Range(10, 40);
+                newZ = Random.Range(10, 40);
 
                 dirX = Random.Range(0, 2) == 0 ? -1 : 1;
                 dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
@@ -54,7 +53,6 @@ public class behavior : MonoBehaviour
                 newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
 
                 newDroid = Instantiate(this.gameObject, newLocation, this.transform.rotation);
-                newDroid.GetComponent<behavior>().curWave++;
             }
 
             Destroy(this.gameObject);

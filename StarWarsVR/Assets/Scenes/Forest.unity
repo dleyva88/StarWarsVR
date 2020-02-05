@@ -644,6 +644,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+--- !u!1 &1354779702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1354779701}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1354779703
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354779702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: ef6178546f77bc546af127fb4c56da0c, type: 3}
+--- !u!4 &1354779708 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1354779701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1376727938
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1904042333, guid: a624b7c0b17bb2342837da53d2bfbfcb, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1354779708}
     - target: {fileID: 1528222355790250, guid: a624b7c0b17bb2342837da53d2bfbfcb, type: 3}
       propertyPath: m_Name
       value: TrainingDroid
@@ -1050,6 +1080,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1740785949
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740785947}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: d4f74614089221c46afa91592b748ae1, type: 3}
 --- !u!114 &1740785950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100050, guid: d4f74614089221c46afa91592b748ae1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: d4f74614089221c46afa91592b748ae1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1220,7 +1264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c68fa107a54994d9706a4da84eb4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightedMaterial: {fileID: 0}
 --- !u!4 &2036044337
 Transform:
   m_ObjectHideFlags: 0
