@@ -51,7 +51,8 @@
     },
     {
       "name": "/actions/default/in/ForceGrab",
-      "type": "vector2"
+      "type": "vector2",
+      "requirement": "optional"
     },
     {
       "name": "/actions/default/out/Haptic",
@@ -102,6 +103,10 @@
     },
     {
       "name": "/actions/mixedreality",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/NewSet",
       "usage": "single"
     }
   ],

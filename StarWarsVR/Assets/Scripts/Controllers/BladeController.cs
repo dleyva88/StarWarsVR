@@ -5,45 +5,26 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BladeController : MonoBehaviour
 {
-    public float ActivateSpeed = 5;
     public AudioClip BladeConstantSound;
     public AudioClip BladeReflectSound;
     public Light BladeLight;
 
     private AudioSource mAudioSource;
-    private bool mIsOn = true;
-    private float mTargetScale;
-    private MeshRenderer mBlade;
+
 
     private void Start()
     {
-        mBlade = GetComponent<MeshRenderer>();
+        //mBlade = GetComponent<MeshRenderer>();
         mAudioSource = GetComponent<AudioSource>();
         mAudioSource.clip = BladeConstantSound;
         mAudioSource.Play();
         BladeLight.intensity = 1;
     }
     
-    void FixedUpdate()
-    {
-        // Move towards the target scale with constant step.
-        transform.localScale = new Vector3(transform.localScale.x,
-            Mathf.MoveTowards(transform.localScale.y, mTargetScale, ActivateSpeed * Time.deltaTime),
-            transform.localScale.z);
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (mIsOn)
-        {         
-            Destroyable destroyable = other.gameObject.GetComponent<Destroyable>();
-            if (destroyable)
-            {
-                destroyable.Destroyed();
-            }
-        }
-
-        if (other.transform.gameObject.name.Equals("Bullet") || other.transform.gameObject.name.Equals("Robots_Prowler"))
+        if (other.transform.gameObject.name.StartsWith("Bullet") || other.transform.gameObject.name.StartsWith("Robots_Prowler"))
         {
             mAudioSource.PlayOneShot(BladeReflectSound);
         }
