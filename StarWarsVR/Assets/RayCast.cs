@@ -4,6 +4,8 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
+//https://connect.unity.com/p/steamvr-2-0-starter-migration-action-sets
+
 public class RayCast : MonoBehaviour
 {
     
