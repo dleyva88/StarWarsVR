@@ -13,7 +13,7 @@ public class behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(GameObject.Find("Player").transform);
+        gameObject.transform.LookAt(GameObject.Find("walkerTarget").transform);
 
         transform.position += transform.forward * 2.0f * Time.smoothDeltaTime;
     }

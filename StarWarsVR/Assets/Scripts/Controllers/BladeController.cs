@@ -11,12 +11,13 @@ public class BladeController : MonoBehaviour
     public Light BladeLight;
 
     private AudioSource mAudioSource;
-
-    private bool mIsOn;
+    private bool mIsOn = true;
     private float mTargetScale;
+    private MeshRenderer mBlade;
 
     private void Start()
     {
+        mBlade = GetComponent<MeshRenderer>();
         mAudioSource = GetComponent<AudioSource>();
         mAudioSource.clip = BladeConstantSound;
         mAudioSource.Play();
@@ -40,6 +41,11 @@ public class BladeController : MonoBehaviour
             {
                 destroyable.Destroyed();
             }
+        }
+
+        if (other.transform.gameObject.name.Equals("Bullet") || other.transform.gameObject.name.Equals("Robots_Prowler"))
+        {
+            mAudioSource.PlayOneShot(BladeReflectSound);
         }
     }
 }

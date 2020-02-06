@@ -17,13 +17,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.name.Equals("player"))
+        if (other.transform.gameObject.name.Equals("Player"))
         {
             Debug.Log("The player got hit!");
 
             Destroy(this.gameObject);
         }
-        else if (other.transform.gameObject.name.Equals("Lightsaber"))
+        else if (other.transform.gameObject.name.Equals("Blade"))
         {
             Debug.Log("Hit lightsaber");
 
