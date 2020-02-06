@@ -26,13 +26,14 @@ public class behavior : MonoBehaviour
         {
             Debug.Log("The Player got hit!");
 
-            Destroy(this.gameObject);
+            //Take damage
+            //Destroy(this.gameObject);
         }
         else if (other.transform.gameObject.name.Equals("Hilt"))
         { 
             other.GetComponent<killCounter>().numKilled++;
 
-            if (other.GetComponent<killCounter>().numKilled <= other.GetComponent<killCounter>().maxKill/2)
+            if (other.GetComponent<killCounter>().numKilled <= other.GetComponent<killCounter>().maxKilled/2)
             {
                 int newX = Random.Range(10, 40);
                 int newZ = Random.Range(10, 40);

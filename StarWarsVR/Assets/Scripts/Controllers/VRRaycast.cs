@@ -14,7 +14,7 @@ public class VRRaycast : MonoBehaviour
     void Awake()
     {
         //If attached to head, will return null (expected behavior)
-        Input input = GetComponent()
+        //Input input = GetComponent()
 
     }
     // Start is called before the first frame update
