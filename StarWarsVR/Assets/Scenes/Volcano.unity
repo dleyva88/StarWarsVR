@@ -1335,6 +1335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainingDroid
       objectReference: {fileID: 0}
+    - target: {fileID: 1528222355790250, guid: a624b7c0b17bb2342837da53d2bfbfcb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4113744102815852, guid: a624b7c0b17bb2342837da53d2bfbfcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 526
@@ -1379,7 +1383,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 54918809788772306, guid: a624b7c0b17bb2342837da53d2bfbfcb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a624b7c0b17bb2342837da53d2bfbfcb, type: 3}
 --- !u!1 &1019609762
 GameObject:
@@ -2519,6 +2524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 812887434, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5559569718794339849, guid: d9904bc149dd730478c007339b4e3f45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2578,6 +2587,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559569718829108797, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.1051
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559569718829108797, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2813
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559569719258965590, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9904bc149dd730478c007339b4e3f45, type: 3}

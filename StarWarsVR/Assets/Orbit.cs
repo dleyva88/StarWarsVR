@@ -25,8 +25,8 @@ public class Orbit : MonoBehaviour
         {
             Instantiate(bulletPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
             this.gameObject.GetComponent<AudioSource>().Play();
-            fire = Random.Range(60, 180);
-            print(fire);
+            fire = Random.Range(10, 60);
+            //print(fire);
             if (fire % 2 == 0)
                 direction = 1;
             else

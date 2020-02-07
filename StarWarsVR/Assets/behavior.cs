@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class behavior : MonoBehaviour
 {
+    public GameObject Target;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<NavMeshAgent>().destination = Target.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.LookAt(GameObject.Find("walkerTarget").transform);
-
         transform.position += transform.forward * 2.0f * Time.smoothDeltaTime;
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
@@ -14,7 +15,11 @@ public class RayCast : MonoBehaviour
 
     private Interactable mCurrentInteractable = null;
     private List<Interactable> mContactIneractables = new List<Interactable>();
-    
+
+    private Tuple<GameObject,GameObject> forcePoint;
+    public float force;
+    public float drag;
+
     private void Awake()
     {
         mPose = GetComponent<SteamVR_Behaviour_Pose>();
@@ -30,39 +35,45 @@ public class RayCast : MonoBehaviour
         //// This would cast rays only against colliders in layer 8.
         //// But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         //layerMask = ~layerMask;
-
-        RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + Vector3.down), out hit, Mathf.Infinity))
+        if (grab.GetStateDown(mPose.inputSource))
         {
-            // If it does hit an object, use the trigger to grab that object
-
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.down) * hit.distance, Color.yellow);
-            Debug.Log("It Hit " + hit.collider.gameObject.tag);
-
-            if (hit.collider.gameObject.tag == "Selectable")
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + Vector3.down), out hit, Mathf.Infinity))
             {
-                if(grab.GetStateDown(mPose.inputSource))
-                {
-                    print(mPose.inputSource + "Trigger Down on " + hit.collider.gameObject.name);
-                    Pickup(hit.collider.gameObject);
-                }
+                // If it does hit an object, use the trigger to grab that object
 
-                if (grab.GetStateUp(mPose.inputSource))
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.down) * hit.distance, Color.yellow);
+                Debug.Log("It Hit " + hit.collider.gameObject.tag);
+
+                if (hit.collider.gameObject.tag == "Selectable")
                 {
-                    print(mPose.inputSource + "Trigger Up");
-                    Drop();
+                    Debug.Log(mPose.inputSource + "Trigger Down on " + hit.collider.gameObject.name);
+                    GameObject temp = new GameObject("ForcePoint");
+                    temp.transform.position = hit.transform.position;
+                    temp.transform.parent = transform;
+                    forcePoint = new Tuple<GameObject, GameObject>(temp, hit.collider.gameObject);
+                    forcePoint.Item2.GetComponent<Rigidbody>().drag = drag;
                 }
             }
 
-            
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            Debug.Log("Did not Hit");
         }
 
+        if (grab.GetStateUp(mPose.inputSource))
+        {
+            Debug.Log(mPose.inputSource + "Trigger Up");
+            forcePoint.Item2.GetComponent<Rigidbody>().drag = 0;
+            forcePoint = null;
+        }
+
+        if(forcePoint != null)
+        {
+            forcePoint.Item2.GetComponent<Rigidbody>().AddForceAtPosition(
+                (forcePoint.Item1.transform.position - forcePoint.Item2.transform.position).normalized
+                * Vector3.Distance(forcePoint.Item1.transform.position, forcePoint.Item2.transform.position)
+                * Vector3.Distance(forcePoint.Item1.transform.position, forcePoint.Item2.transform.position)
+                * force, forcePoint.Item2.transform.position);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,8 +91,8 @@ public class RayCast : MonoBehaviour
         Rigidbody gravity = obj.GetComponent<Rigidbody>();
         gravity.useGravity = false;
 
-        Vector3 current = obj.transform.localPosition;
-        Vector3 handPos = hand.transform.localPosition;
+        Vector3 current = obj.transform.position;
+        Vector3 handPos = hand.transform.position;
         
     }
 

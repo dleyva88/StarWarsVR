@@ -12,11 +12,11 @@ public class killCounter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("collision detected");
-        print("Name of other collider: " + other.transform.gameObject.name);
+        //print("collision detected");
+        //print("Name of other collider: " + other.transform.gameObject.name);
         if (other.transform.gameObject.name.StartsWith("Robots_Prowler"))
         {
-            print("Num Killed: " + numKilled);
+            //print("Num Killed: " + numKilled);
             if(numKilled == maxKilled)
             {
                 boss.SetActive(true);
