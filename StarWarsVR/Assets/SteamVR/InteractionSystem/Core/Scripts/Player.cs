@@ -5,6 +5,8 @@
 //=============================================================================
 
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -42,7 +44,7 @@ namespace Valve.VR.InteractionSystem
 
 		public bool allowToggleTo2D = true;
 
-
+		public GameObject playerHealth;
 		//-------------------------------------------------
 		// Singleton instance of the Player. Only one can exist at a time.
 		//-------------------------------------------------
@@ -412,5 +414,27 @@ namespace Valve.VR.InteractionSystem
 		{
 			//Do something appropriate here
 		}
+
+		private void OnTriggerEnter(Collider other)
+		{
+			print("Name of other collider: " + other.transform.gameObject.name);
+            if (other.transform.gameObject.name.StartsWith("Bullet"))
+            {
+                print("The player got hit!");
+                //playerHealth.GetComponent<Text>().text = "Ouch";
+                string curHP = playerHealth.GetComponent<Text>().text;
+				int curHPInt = Int32.Parse(curHP);
+				curHPInt--;
+				playerHealth.GetComponent<Text>().text = curHPInt.ToString();
+
+				//Destroy(this.gameObject);
+			}
+            //else if (other.transform.gameObject.name.Equals("Blade"))
+            //{
+            //	Debug.Log("Hit lightsaber");
+
+            //	direction = -1;
+            //}
+        }
 	}
 }
