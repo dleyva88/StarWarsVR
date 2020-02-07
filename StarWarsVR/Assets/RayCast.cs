@@ -6,10 +6,19 @@ using Valve.VR.InteractionSystem;
 
 public class RayCast : MonoBehaviour
 {
+    public SteamVR_Action_Boolean grab = null;
+    public GameObject hand = null;
+
+    private SteamVR_Behaviour_Pose mPose = null;
+    private FixedJoint mJoint = null;
+
+    private Interactable mCurrentInteractable = null;
+    private List<Interactable> mContactIneractables = new List<Interactable>();
     
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        mPose = GetComponent<SteamVR_Behaviour_Pose>();
+        mJoint = GetComponent<FixedJoint>();
     }
 
     // Update is called once per frame
@@ -33,7 +42,19 @@ public class RayCast : MonoBehaviour
 
             if (hit.collider.gameObject.tag == "Selectable")
             {
+                if(grab.GetStateDown(mPose.inputSource))
+                {
+                    print(mPose.inputSource + "Trigger Down on " + hit.collider.gameObject.name);
+                    Pickup(hit.collider.gameObject);
+                }
+
+                if (grab.GetStateUp(mPose.inputSource))
+                {
+                    print(mPose.inputSource + "Trigger Up");
+                    Drop();
+                }
             }
+
             
         }
         else
@@ -42,5 +63,35 @@ public class RayCast : MonoBehaviour
             Debug.Log("Did not Hit");
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+    }
+
+    private void Pickup(GameObject obj)
+    {
+        Rigidbody gravity = obj.GetComponent<Rigidbody>();
+        gravity.useGravity = false;
+
+        Vector3 current = obj.transform.localPosition;
+        Vector3 handPos = hand.transform.localPosition;
+        
+    }
+
+    private void Drop()
+    {
+
+    }
+
+    private Interactable GetNearestInteractable()
+    {
+        return null;
     }
 }

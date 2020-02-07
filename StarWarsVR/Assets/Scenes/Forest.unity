@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &89440947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5558570820370353015, guid: d9904bc149dd730478c007339b4e3f45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1100044443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1051369551
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +143,7 @@ GameObject:
   - component: {fileID: 1051369557}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,6 +324,18 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 1749772871}
+    - target: {fileID: 812887434, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
+      propertyPath: grab.actionPath
+      value: /actions/default/in/GrabGrip
+      objectReference: {fileID: 0}
+    - target: {fileID: 812887434, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 89440947}
+    - target: {fileID: 812887434, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5559569718794339849, guid: d9904bc149dd730478c007339b4e3f45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -377,6 +395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5560180588218268183, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.327
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
@@ -830,7 +853,7 @@ GameObject:
   - component: {fileID: 1562701139}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1329,7 +1352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100050, guid: d4f74614089221c46afa91592b748ae1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: d4f74614089221c46afa91592b748ae1, type: 3}
       propertyPath: m_LocalPosition.x
