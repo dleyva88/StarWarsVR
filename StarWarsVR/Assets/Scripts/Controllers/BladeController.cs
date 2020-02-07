@@ -20,7 +20,7 @@ public class BladeController : MonoBehaviour
         mAudioSource.Play();
         BladeLight.intensity = 1;
     }
-
+    
 
     void OnTriggerEnter(Collider other)
     {
