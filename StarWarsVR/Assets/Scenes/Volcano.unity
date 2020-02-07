@@ -2346,6 +2346,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15412f0b095306546a8bcbedde88ba7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mLightSaberHolding: {fileID: 0}
+  mLightsaberTouching: {fileID: 0}
+  mHolsterTouching: {fileID: 0}
+  mHandRole:
+    m_roleTypeFullName: 
+    m_roleValueName: 
+    m_roleValueInt: 0
+    m_isTypeDirty: 1
+    m_isValueDirty: 1
+    m_lockUpdate: 0
+    m_roleValue: 0
+    m_deviceIndex: 4294967295
+  mModel: {fileID: 0}
 --- !u!82 &1932349579
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2578,6 +2591,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559569718829108769, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6614327
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559569718829108769, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559569718829108769, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8773585
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
