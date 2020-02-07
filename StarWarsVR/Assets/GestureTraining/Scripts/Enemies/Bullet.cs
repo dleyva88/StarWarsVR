@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //print("Name of other collider: " + other.transform.gameObject.name);
         if (other.transform.gameObject.name.Equals("Player"))
         {
             //Debug.Log("The player got hit!");
