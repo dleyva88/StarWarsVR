@@ -5,11 +5,7 @@
       "app_key": "application.generated.unity.starwars.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-<<<<<<< HEAD
       "action_manifest_path": "C:\\Users\\Codex\\Documents\\StarWarsVR\\StarWarsVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
-=======
-      "action_manifest_path": "C:\\Users\\Student\\Desktop\\StarWarsVR\\StarWarsVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
->>>>>>> 22aaae50e5f3810e5e1d2a4f4483108bba41f217
       "strings": {
         "en_us": {
           "name": "StarWars [Testing]"
