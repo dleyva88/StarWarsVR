@@ -357,6 +357,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &21634769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5559569718794663537, guid: d9904bc149dd730478c007339b4e3f45,
+    type: 3}
+  m_PrefabInstance: {fileID: 5559569719675772147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &21634770
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21634769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &71851535
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2733,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5559569718788581125, guid: d9904bc149dd730478c007339b4e3f45,
+        type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 71851535}
     - target: {fileID: 5559569718794339849, guid: d9904bc149dd730478c007339b4e3f45,
         type: 3}
       propertyPath: m_LocalPosition.x

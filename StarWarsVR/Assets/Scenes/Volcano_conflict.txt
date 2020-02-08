@@ -2709,12 +2709,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< HEAD
-    - target: {fileID: 812887434, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-=======
     - target: {fileID: 5558570819391553319, guid: d9904bc149dd730478c007339b4e3f45,
         type: 3}
       propertyPath: m_IsActive
@@ -2725,7 +2719,6 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 71851535}
->>>>>>> 22aaae50e5f3810e5e1d2a4f4483108bba41f217
     - target: {fileID: 5559569718794339849, guid: d9904bc149dd730478c007339b4e3f45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2786,22 +2779,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 5559569718829108797, guid: d9904bc149dd730478c007339b4e3f45,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.1051
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559569718829108797, guid: d9904bc149dd730478c007339b4e3f45,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2813
-      objectReference: {fileID: 0}
-    - target: {fileID: 5559569719258965590, guid: d9904bc149dd730478c007339b4e3f45,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 3
-=======
     - target: {fileID: 5559569718794752990, guid: d9904bc149dd730478c007339b4e3f45,
         type: 3}
       propertyPath: m_Enabled
@@ -2816,7 +2793,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Height
       value: 2
->>>>>>> 22aaae50e5f3810e5e1d2a4f4483108bba41f217
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
