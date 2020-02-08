@@ -2,14 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
+using DigitalRuby.LightningBolt;
+using Random = UnityEngine.Random;
 
 public class RayCast : MonoBehaviour
 {
     public SteamVR_Action_Boolean grab = null;
-    public SteamVR_Action_Boolean lightning = null;
+    public SteamVR_Action_Boolean unlimitedPower = null;
     public GameObject hand = null;
+    public GameObject lightning;
 
     private SteamVR_Behaviour_Pose mPose = null;
     private FixedJoint mJoint = null;
@@ -36,9 +40,9 @@ public class RayCast : MonoBehaviour
         //// This would cast rays only against colliders in layer 8.
         //// But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
         //layerMask = ~layerMask;
+        RaycastHit hit;
         if (grab.GetStateDown(mPose.inputSource))
         {
-            RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
             {
@@ -74,6 +78,50 @@ public class RayCast : MonoBehaviour
                 * Vector3.Distance(forcePoint.Item1.transform.position, forcePoint.Item2.transform.position)
                 * Vector3.Distance(forcePoint.Item1.transform.position, forcePoint.Item2.transform.position)
                 * force, forcePoint.Item2.transform.position);
+        }
+
+        if (unlimitedPower.GetState(mPose.inputSource))
+        {
+            lightning.GetComponent<LightningBoltScript>().ManualMode = false;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+            {
+                // If it does hit an object, use the trigger to grab that object
+
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                Debug.Log("It Hit " + hit.collider.gameObject.tag);
+
+                if (hit.collider.gameObject.tag == "Lightningable")
+                {
+                    int newX = Random.Range(10, 40);
+                    int newZ = Random.Range(10, 40);
+
+                    int dirX = Random.Range(0, 2) == 0 ? -1 : 1;
+                    int dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
+
+                    Vector3 newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
+
+                    var newDroid = Instantiate(hit.collider.gameObject, newLocation, hit.collider.gameObject.transform.rotation);
+
+                    newX = Random.Range(10, 40);
+                    newZ = Random.Range(10, 40);
+
+                    dirX = Random.Range(0, 2) == 0 ? -1 : 1;
+                    dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
+
+                    newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
+
+                    newDroid = Instantiate(hit.collider.gameObject, newLocation, hit.collider.gameObject.transform.rotation);
+
+
+                    Debug.Log(mPose.inputSource + "Trigger Down on " + hit.collider.gameObject.name);
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+        }
+
+        if (unlimitedPower.GetStateUp(mPose.inputSource))
+        {
+            lightning.GetComponent<LightningBoltScript>().ManualMode = true;
         }
     }
 }

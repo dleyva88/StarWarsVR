@@ -30,7 +30,7 @@ public class behavior : MonoBehaviour
             //Take damage
             //Destroy(this.gameObject);
         }
-        else if (other.transform.gameObject.name.Equals("Hilt"))
+        else if (other.transform.gameObject.name.Equals("Blade") || other.transform.gameObject.name.Equals("endLightning"))
         { 
             other.GetComponent<killCounter>().numKilled++;
 
@@ -58,6 +58,8 @@ public class behavior : MonoBehaviour
             }
 
             Destroy(this.gameObject);
+
+
         }
     }
 }

@@ -9,6 +9,8 @@ public class BladeController : MonoBehaviour
     public AudioClip BladeReflectSound;
     public Light BladeLight;
 
+    public GameObject Explosion;
+
     private AudioSource mAudioSource;
 
 
@@ -27,6 +29,12 @@ public class BladeController : MonoBehaviour
         if (other.transform.gameObject.name.StartsWith("Bullet") || other.transform.gameObject.name.StartsWith("Robots_Prowler"))
         {
             mAudioSource.PlayOneShot(BladeReflectSound);
+
+            if (!other.transform.gameObject.name.StartsWith("Bullet"))
+            {
+                GameObject explosion = Instantiate(Explosion, other.gameObject.transform);
+                explosion.SetActive(true);
+            }
         }
     }
 }
