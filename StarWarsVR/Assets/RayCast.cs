@@ -12,8 +12,10 @@ public class RayCast : MonoBehaviour
 {
     public SteamVR_Action_Boolean grab = null;
     public SteamVR_Action_Boolean unlimitedPower = null;
+    public SteamVR_Action_Boolean forcePush = null;
     public GameObject hand = null;
     public GameObject lightning;
+    public GameObject forceBlast;
 
     private SteamVR_Behaviour_Pose mPose = null;
     private FixedJoint mJoint = null;
@@ -122,6 +124,27 @@ public class RayCast : MonoBehaviour
         if (unlimitedPower.GetStateUp(mPose.inputSource))
         {
             lightning.GetComponent<LightningBoltScript>().ManualMode = true;
+        }
+
+        if (forcePush.GetStateDown(mPose.inputSource))
+        {
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+            {
+                // If it does hit an object, use the trigger to grab that object
+
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                Debug.Log("It Hit " + hit.collider.gameObject.tag);
+
+                if (hit.collider.gameObject.tag == "Lightningable")
+                {
+                    GameObject explosion = Instantiate(forceBlast, hit.transform);
+                    explosion.SetActive(true);
+                }
+            }
+        }
+
+        if (forcePush.GetStateUp(mPose.inputSource))
+        {
         }
     }
 }
