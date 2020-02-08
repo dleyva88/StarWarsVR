@@ -105,11 +105,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vector2 ForceGrab
+        public virtual SteamVR_Action_Boolean Lightning
         {
             get
             {
-                return SteamVR_Actions.default_ForceGrab;
+                return SteamVR_Actions.default_Lightning;
             }
         }
         
