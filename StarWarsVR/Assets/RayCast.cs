@@ -8,6 +8,7 @@ using Valve.VR.InteractionSystem;
 public class RayCast : MonoBehaviour
 {
     public SteamVR_Action_Boolean grab = null;
+    public SteamVR_Action_Boolean lightning = null;
     public GameObject hand = null;
 
     private SteamVR_Behaviour_Pose mPose = null;
@@ -16,7 +17,7 @@ public class RayCast : MonoBehaviour
     private Interactable mCurrentInteractable = null;
     private List<Interactable> mContactIneractables = new List<Interactable>();
 
-    private Tuple<GameObject,GameObject> forcePoint;
+    private Tuple<GameObject, GameObject> forcePoint;
     public float force;
     public float drag;
 
@@ -39,11 +40,11 @@ public class RayCast : MonoBehaviour
         {
             RaycastHit hit;
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + Vector3.down), out hit, Mathf.Infinity))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
             {
                 // If it does hit an object, use the trigger to grab that object
 
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward + Vector3.down) * hit.distance, Color.yellow);
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 Debug.Log("It Hit " + hit.collider.gameObject.tag);
 
                 if (hit.collider.gameObject.tag == "Selectable")
@@ -66,7 +67,7 @@ public class RayCast : MonoBehaviour
             forcePoint = null;
         }
 
-        if(forcePoint != null)
+        if (forcePoint != null)
         {
             forcePoint.Item2.GetComponent<Rigidbody>().AddForceAtPosition(
                 (forcePoint.Item1.transform.position - forcePoint.Item2.transform.position).normalized
@@ -75,34 +76,5 @@ public class RayCast : MonoBehaviour
                 * force, forcePoint.Item2.transform.position);
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-    }
-
-    private void Pickup(GameObject obj)
-    {
-        Rigidbody gravity = obj.GetComponent<Rigidbody>();
-        gravity.useGravity = false;
-
-        Vector3 current = obj.transform.position;
-        Vector3 handPos = hand.transform.position;
-        
-    }
-
-    private void Drop()
-    {
-
-    }
-
-    private Interactable GetNearestInteractable()
-    {
-        return null;
-    }
 }
+

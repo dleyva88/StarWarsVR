@@ -99,7 +99,7 @@ namespace Valve.VR.Extras
 
             float dist = 100f;
 
-            Ray raycast = new Ray(transform.position, transform.forward);
+            Ray raycast = new Ray(transform.position + Vector3.down, transform.forward);
             RaycastHit hit;
             bool bHit = Physics.Raycast(raycast, out hit);
 
