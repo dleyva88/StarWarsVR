@@ -10,17 +10,25 @@ public class killCounter : MonoBehaviour
 
     public GameObject boss;
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        //print("collision detected");
-        //print("Name of other collider: " + other.transform.gameObject.name);
-        if (other.transform.gameObject.name.StartsWith("Robots_Prowler"))
+        if (numKilled == maxKilled)
         {
-            //print("Num Killed: " + numKilled);
-            if(numKilled == maxKilled)
-            {
-                boss.SetActive(true);
-            }
+            boss.SetActive(true);
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //print("collision detected");
+    //    //print("Name of other collider: " + other.transform.gameObject.name);
+    //    if (other.transform.gameObject.name.StartsWith("Robots_Prowler"))
+    //    {
+    //        //print("Num Killed: " + numKilled);
+    //        if(numKilled == maxKilled)
+    //        {
+    //            boss.SetActive(true);
+    //        }
+    //    }
+    //}
 }

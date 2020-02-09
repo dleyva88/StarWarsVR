@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 74d8d8e06c65b9f4296cc573409974a7, type: 2}
+--- !u!1 &307824841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5559569718829108798, guid: d9904bc149dd730478c007339b4e3f45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1100044443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &399062374
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,10 +799,18 @@ PrefabInstance:
       propertyPath: rayDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 812887434, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
+      propertyPath: blade
+      value: 
+      objectReference: {fileID: 307824841}
     - target: {fileID: 1316575732, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
       propertyPath: boss
       value: 
       objectReference: {fileID: 1749772871}
+    - target: {fileID: 1316575732, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
+      propertyPath: maxKilled
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1692795734, guid: d9904bc149dd730478c007339b4e3f45, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.73

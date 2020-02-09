@@ -16,6 +16,7 @@ public class RayCast : MonoBehaviour
     public GameObject hand = null;
     public GameObject lightning;
     public GameObject forceBlast;
+    public GameObject blade;
 
     private SteamVR_Behaviour_Pose mPose = null;
     private FixedJoint mJoint = null;
@@ -94,26 +95,30 @@ public class RayCast : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "Lightningable")
                 {
-                    int newX = Random.Range(10, 40);
-                    int newZ = Random.Range(10, 40);
+                    blade.GetComponent<killCounter>().numKilled++;
 
-                    int dirX = Random.Range(0, 2) == 0 ? -1 : 1;
-                    int dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
+                    if (blade.GetComponent<killCounter>().numKilled <= blade.GetComponent<killCounter>().maxKilled / 2)
+                    {
+                        int newX = Random.Range(10, 40);
+                        int newZ = Random.Range(10, 40);
 
-                    Vector3 newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
+                        int dirX = Random.Range(0, 2) == 0 ? -1 : 1;
+                        int dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
 
-                    var newDroid = Instantiate(hit.collider.gameObject, newLocation, hit.collider.gameObject.transform.rotation);
+                        Vector3 newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
 
-                    newX = Random.Range(10, 40);
-                    newZ = Random.Range(10, 40);
+                        var newDroid = Instantiate(hit.collider.gameObject, newLocation, hit.collider.gameObject.transform.rotation);
 
-                    dirX = Random.Range(0, 2) == 0 ? -1 : 1;
-                    dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
+                        newX = Random.Range(10, 40);
+                        newZ = Random.Range(10, 40);
 
-                    newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
+                        dirX = Random.Range(0, 2) == 0 ? -1 : 1;
+                        dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
 
-                    newDroid = Instantiate(hit.collider.gameObject, newLocation, hit.collider.gameObject.transform.rotation);
+                        newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
 
+                        newDroid = Instantiate(hit.collider.gameObject, newLocation, hit.collider.gameObject.transform.rotation);
+                    }
 
                     Debug.Log(mPose.inputSource + "Trigger Down on " + hit.collider.gameObject.name);
                     Destroy(hit.collider.gameObject);
