@@ -69,7 +69,7 @@ public class RayCast : MonoBehaviour
         if (grab.GetStateUp(mPose.inputSource))
         {
             Debug.Log(mPose.inputSource + "Trigger Up");
-            forcePoint.Item2.GetComponent<Rigidbody>().drag = 0;
+            forcePoint.Item2.GetComponent<Rigidbody>().drag = 1;
             forcePoint = null;
         }
 
@@ -128,23 +128,12 @@ public class RayCast : MonoBehaviour
 
         if (forcePush.GetStateDown(mPose.inputSource))
         {
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-            {
-                // If it does hit an object, use the trigger to grab that object
-
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-                Debug.Log("It Hit " + hit.collider.gameObject.tag);
-
-                if (hit.collider.gameObject.tag == "Lightningable")
-                {
-                    GameObject explosion = Instantiate(forceBlast, hit.transform);
-                    explosion.SetActive(true);
-                }
-            }
+            forceBlast.gameObject.SetActive(true);
         }
 
         if (forcePush.GetStateUp(mPose.inputSource))
         {
+            forceBlast.gameObject.SetActive(false);
         }
     }
 }

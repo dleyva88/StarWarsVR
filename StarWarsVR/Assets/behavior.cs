@@ -31,10 +31,10 @@ public class behavior : MonoBehaviour
             //Destroy(this.gameObject);
         }
         else if (other.transform.gameObject.name.Equals("Blade") || other.transform.gameObject.name.Equals("endLightning"))
-        { 
+        {
             other.GetComponent<killCounter>().numKilled++;
 
-            if (other.GetComponent<killCounter>().numKilled <= other.GetComponent<killCounter>().maxKilled/2)
+            if (other.GetComponent<killCounter>().numKilled <= other.GetComponent<killCounter>().maxKilled / 2)
             {
                 int newX = Random.Range(10, 40);
                 int newZ = Random.Range(10, 40);
@@ -43,7 +43,7 @@ public class behavior : MonoBehaviour
                 int dirZ = Random.Range(0, 2) == 0 ? -1 : 1;
 
                 Vector3 newLocation = new Vector3(500 + dirX * newX, 0, 500 + dirZ * newZ);
-                
+
                 var newDroid = Instantiate(this.gameObject, newLocation, this.transform.rotation);
 
                 newX = Random.Range(10, 40);
@@ -61,5 +61,22 @@ public class behavior : MonoBehaviour
 
 
         }
+        else if (other.transform.gameObject.name.Equals("ForceBlast"))
+        {
+            StartCoroutine(pushBack(other));
+        }
+    }
+
+    IEnumerator pushBack(Collider other)
+    {
+        NavMeshAgent droidNav = this.gameObject.GetComponent<NavMeshAgent>();
+        Vector3 defaultVelocity = droidNav.velocity;
+        droidNav.angularSpeed = 0;
+        droidNav.velocity = other.transform.forward * 5;
+
+        yield return new WaitForSeconds(3);
+
+        droidNav.velocity = defaultVelocity;
+        droidNav.SetDestination(Target.transform.position);
     }
 }
