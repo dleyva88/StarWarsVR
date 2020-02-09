@@ -418,14 +418,18 @@ namespace Valve.VR.InteractionSystem
 		private void OnTriggerEnter(Collider other)
 		{
 			print("Name of other collider: " + other.transform.gameObject.name);
-            if (other.transform.gameObject.name.StartsWith("Bullet"))
+            if (other.transform.gameObject.name.StartsWith("Bullet") || other.transform.gameObject.name.StartsWith("Robots"))
             {
                 print("The player got hit!");
                 //playerHealth.GetComponent<Text>().text = "Ouch";
                 string curHP = playerHealth.GetComponent<Text>().text;
 				int curHPInt = Int32.Parse(curHP);
 				curHPInt--;
-				playerHealth.GetComponent<Text>().text = curHPInt.ToString();
+
+                if(curHPInt < 1)
+                    playerHealth.GetComponent<Text>().text = "GAME OVER!";
+                else
+                    playerHealth.GetComponent<Text>().text = curHPInt.ToString();
 
 				//Destroy(this.gameObject);
 			}
