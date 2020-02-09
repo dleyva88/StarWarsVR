@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4906669412671379406}
   - component: {fileID: 4906669412671379392}
   - component: {fileID: 4906669412671379407}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,13 +88,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4906669413191608308}
   - component: {fileID: 4906669413191608306}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lightsaber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4906669413191608308
 Transform:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ Transform:
   m_GameObject: {fileID: 4906669413191608305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.927745, y: 1.927745, z: 1.927745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4906669413314049558}
   - {fileID: 4906669413286997605}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4906669413286997605}
   - component: {fileID: 4906669413286997606}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lightsaber Hilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,9 @@ GameObject:
   - component: {fileID: 4906669413314049545}
   - component: {fileID: 4906669413314049544}
   - component: {fileID: 4906669413314049559}
-  m_Layer: 0
+  - component: {fileID: 83219799}
+  - component: {fileID: 83219798}
+  m_Layer: 2
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,8 +207,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4906669413314049557}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0.05}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0.1051}
+  m_LocalScale: {x: 1, y: 1.2813, z: 1}
   m_Children: []
   m_Father: {fileID: 4906669413191608308}
   m_RootOrder: 0
@@ -281,9 +283,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 2
-  m_Color: {r: 0.053194046, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.6614327, g: 0, b: 0.8773585, a: 1}
   m_Intensity: 0
-  m_Range: 9
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -453,12 +455,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ad9f43167039a44a3d3dcedb09f217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActivateSpeed: 5
-  BladeOnSound: {fileID: 0}
-  BladeOffSound: {fileID: 0}
-  BladeConstantSound: {fileID: 0}
-  BladeReflectSound: {fileID: 0}
+  BladeConstantSound: {fileID: 8300000, guid: 1042a02dd9a8a6c43941b510864f2363, type: 3}
+  BladeReflectSound: {fileID: 8300000, guid: 101a8c5a6e031c6438805cdcdb7dfd67, type: 3}
+  BladeOnSound: {fileID: 8300000, guid: d2f2d632704e7af4687421a364c9cca5, type: 3}
   BladeLight: {fileID: 4906669413314049546}
+  Explosion: {fileID: 0}
+--- !u!54 &83219799
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906669413314049557}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &83219798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906669413314049557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e17035e01a72b74ca8edcf3bf0fdeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxKilled: 50
+  numKilled: 0
+  boss: {fileID: 0}
 --- !u!1 &4906669413442961856
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906669413442961857}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: lightsaber Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906669413811230660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: lightsaber Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +564,7 @@ GameObject:
   - component: {fileID: 4906669414063271249}
   - component: {fileID: 4906669414063271251}
   - component: {fileID: 4906669414063271250}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +642,7 @@ GameObject:
   - component: {fileID: 4906669414122051159}
   - component: {fileID: 4906669414122051145}
   - component: {fileID: 4906669414122051144}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +718,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906669414486489813}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: lightsaber Silver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

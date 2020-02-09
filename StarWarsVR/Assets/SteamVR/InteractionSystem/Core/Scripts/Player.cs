@@ -44,7 +44,11 @@ namespace Valve.VR.InteractionSystem
 
 		public bool allowToggleTo2D = true;
 
-		public GameObject playerHealth;
+        public AudioClip scream;
+
+        private AudioSource mAudioSource;
+
+        public GameObject playerHealth;
 		//-------------------------------------------------
 		// Singleton instance of the Player. Only one can exist at a time.
 		//-------------------------------------------------
@@ -258,7 +262,9 @@ namespace Valve.VR.InteractionSystem
 			{
 				trackingOriginTransform = this.transform;
 			}
-		}
+
+            mAudioSource = GetComponent<AudioSource>();
+        }
 
 
 		//-------------------------------------------------
@@ -426,8 +432,11 @@ namespace Valve.VR.InteractionSystem
 				int curHPInt = Int32.Parse(curHP);
 				curHPInt--;
 
-                if(curHPInt < 1)
+                if (curHPInt < 1)
+                {
                     playerHealth.GetComponent<Text>().text = "GAME OVER!";
+                    mAudioSource.PlayOneShot(scream);
+    }
                 else
                     playerHealth.GetComponent<Text>().text = curHPInt.ToString();
 

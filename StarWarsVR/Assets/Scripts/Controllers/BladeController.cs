@@ -7,9 +7,10 @@ public class BladeController : MonoBehaviour
 {
     public AudioClip BladeConstantSound;
     public AudioClip BladeReflectSound;
+    public AudioClip BladeOnSound;
     public Light BladeLight;
 
-    public GameObject Explosion;
+    public GameObject bossKiller;
 
     private AudioSource mAudioSource;
 
@@ -18,6 +19,7 @@ public class BladeController : MonoBehaviour
     {
         //mBlade = GetComponent<MeshRenderer>();
         mAudioSource = GetComponent<AudioSource>();
+        mAudioSource.PlayOneShot(BladeOnSound);
         mAudioSource.clip = BladeConstantSound;
         mAudioSource.Play();
         BladeLight.intensity = 1;
@@ -26,15 +28,16 @@ public class BladeController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        print("Colliding With: " + other.transform.gameObject.name);
         if (other.transform.gameObject.name.StartsWith("Bullet") || other.transform.gameObject.name.StartsWith("Robots_Prowler"))
         {
             mAudioSource.PlayOneShot(BladeReflectSound);
-
-            if (!other.transform.gameObject.name.StartsWith("Bullet"))
-            {
-                GameObject explosion = Instantiate(Explosion, other.gameObject.transform);
-                explosion.SetActive(true);
-            }
         }
+
+        if (other.transform.gameObject.name.StartsWith("Blade"))
+        {
+            bossKiller.SetActive(true);
+        }
+
     }
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine.Events;
 using System.Threading;
+using Valve.VR.Extras;
 
 namespace Valve.VR.InteractionSystem
 {
@@ -86,6 +87,8 @@ namespace Valve.VR.InteractionSystem
         public bool showDebugText = false;
         public bool spewDebugText = false;
         public bool showDebugInteractables = false;
+
+        public GameObject lightsaber;
 
         public struct AttachedObject
         {
@@ -1095,12 +1098,16 @@ namespace Valve.VR.InteractionSystem
             CancelInvoke();
         }
 
-
         //-------------------------------------------------
         protected virtual void Update()
         {
             UpdateNoSteamVRFallback();
-
+            //print("Controller position " + this.transform.position.y);
+            if (this.transform.position.y > 2)
+            {
+                lightsaber.SetActive(true);
+                this.GetComponent<SteamVR_LaserPointer>().thickness = 0;
+            }
             GameObject attachedObject = currentAttachedObject;
             if (attachedObject != null)
             {
